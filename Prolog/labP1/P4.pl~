@@ -1,0 +1,15 @@
+substituie([],_,_,[]):-!.
+substituie([H|T],H,L,[L|R]):-!,
+    substituie(T,H,L,R).
+substituie([H|T],E,L,[H|R]):-
+    substituie(T,E,L,R).
+
+eliminan_aux([],_,_,[]):-!.
+eliminan_aux([_|T],N,N,R):-
+    I is N+1,
+    eliminan_aux(T,N,I,R).
+eliminan_aux([H|T],N,I,[H|R]):-
+    I1 is I+1,
+    eliminan_aux(T,N,I1,R).
+
+eliminan(L,N,R):-eliminan_aux(L,N,1,R).

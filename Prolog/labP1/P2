@@ -1,0 +1,8 @@
+cmmdc(A,A,A):-!.
+cmmdc(A,B,R):-
+    A<B,!,
+    B1 is B-A,
+    cmmdc(A,B1,R).
+cmmdc(A,B,R):-
+    A1 is A-B,
+    cmmdc(A1,B,R).

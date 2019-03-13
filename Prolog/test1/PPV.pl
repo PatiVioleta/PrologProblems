@@ -1,0 +1,20 @@
+maxim(L,R):-maxim_aux(L,-32000,R).
+
+maxim_aux([],M,M):-!.
+maxim_aux([H|T],M,R):-
+    H < M,!,
+    maxim_aux(T,M,R).
+maxim_aux([H|T],_,R):-
+    maxim_aux(T,H,R).
+
+poz(L,R):-
+    maxim(L,E),
+    poz_aux(L,E,1,R).
+
+poz_aux([],_,_,[]):-!.
+poz_aux([H|T],H,I,[I|R]):-!,
+    I1 is I+1,
+    poz_aux(T,H,I1,R).
+poz_aux([_|T],M,I,R):-
+    I1 is I+1,
+    poz_aux(T,M,I1,R).

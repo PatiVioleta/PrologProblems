@@ -1,0 +1,6 @@
+person(ana).
+person(alin).
+ochi_verzi(alin).
+frumos(X) :-
+    ochi_verzi(X),
+    person(X).

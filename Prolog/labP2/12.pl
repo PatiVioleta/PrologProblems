@@ -1,0 +1,21 @@
+div(NR,NR,[]):-!.
+div(NR,I,[]):-
+    I>NR,!.
+div(NR,I,[I|R]):-
+    Aux is NR mod I,
+    Aux =:= 0,!,
+    I1 is I+1,
+    div(NR,I1,R).
+div(NR,I,R):-
+    I1 is I+1,
+    div(NR,I1,R).
+
+adauga(L,[],L):-!.
+adauga(L,[H|T],[H|R]):-
+    adauga(L,T,R).
+
+lista([],[]):-!.
+lista([H|T],[H|R1]):-
+    div(H,2,Rez),
+    lista(T,R),
+    adauga(R,Rez,R1).

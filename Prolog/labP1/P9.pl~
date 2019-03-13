@@ -1,0 +1,6 @@
+
+lista(A,B,[A|R]):-
+    A =< B,!,
+    B1 is B-1,
+    lista(A,B1,R).
+lista(_,_,[]).

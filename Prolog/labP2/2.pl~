@@ -1,0 +1,12 @@
+adInSortata([],E,[E]):-!.
+adInSortata([H|T],E,[E,H|T]):-
+    E =< H,!.
+adInSortata([H|T],E,[H|R]):-
+    adInSortata(T,E,R).
+
+
+sortare([],[]):-!.
+sortare([E],[E]):-!.
+sortare([H|T],R):-
+    sortare(T,Rez),
+    adInSortata(Rez,H,R).

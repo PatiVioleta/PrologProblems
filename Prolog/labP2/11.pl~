@@ -1,0 +1,10 @@
+prim(2,_):-!.
+prim(NR,NR):-!.
+prim(NR,I):-
+    NR>2,!,
+    Aux is NR mod 2,
+    Aux =:= 1,
+    Aux2 is NR mod I,
+    Aux2 =\= 0,
+    I1 is I+1,
+    prim(NR,I1).

@@ -1,0 +1,30 @@
+apare([H|_],H):-!.
+apare([_|T],E):-
+    apare(T,E).
+
+diferenta([],_,[]):-!.
+diferenta([H|T],L1,R):-
+    apare(L1,H),!,
+    diferenta(T,L1,R).
+diferenta([H|T],L1,[H|R]):-
+    diferenta(T,L1,R).
+
+adauga(L,[],L):-!.
+adauga(L,[H|T],[H|R]):-
+    adauga(L,T,R).
+
+reuniune(L1,L2,R):-
+    diferenta(L1,L2,R1),
+    adauga(L2,R1,R).
+
+
+pereche(E,[H|_],[E,H]).
+pereche(E,[_|T],R):-
+    pereche(E,T,R).
+
+perechi([H|T],R):-
+    pereche(H,T,R).
+perechi([_|T],R):-
+    perechi(T,R).
+
+toate(L,Rez):-findall(R,perechi(L,R),Rez).

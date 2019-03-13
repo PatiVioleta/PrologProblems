@@ -1,0 +1,2 @@
+candidat([E|_],E).
+candidat([_|T],R):-candidat(T,R).
